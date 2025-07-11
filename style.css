@@ -1,57 +1,69 @@
-*{
+* {
     margin: 0;
     padding: 0;
     text-align: center;
-
+    box-sizing: border-box;
 }
 
-body{
+body {
     background-color: rgb(213, 157, 168);
-
+    font-family: Arial, sans-serif;
 }
-h1{
-    background-color:#064c4e;
+
+h1 {
+    background-color: #064c4e;
     color: #fff;
     height: 3rem;
     line-height: 3rem;
+    font-size: 1.5rem;
 }
 
-.choice{
+.choice {
     height: 165px;
     width: 165px;
-    border-radius:50% ;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.3s ease;
 }
 
-.choice:hover{
+.choice:hover {
     cursor: pointer;
     background-color: #081b31;
 }
 
-img{
+img {
     height: 150px;
     width: 150px;
     object-fit: cover;
     border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
-.choices{
+img:hover {
+    transform: scale(1.1); /* Slight zoom */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Shadow around image */
+    filter: brightness(1.1); /* Slightly brighter */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.choices {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:3rem;
+    gap: 3rem;
     margin-top: 5rem;
+    flex-wrap: wrap;
 }
 
-.score-board{
+.score-board {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3rem;
     margin-top: 3rem;
     gap: 5rem;
+    flex-wrap: wrap;
 }
 
 #user-score,
@@ -59,15 +71,110 @@ img{
     font-size: 6rem;
 }
 
-.msg-container{
+.msg-container {
     margin-top: 5rem;
 }
 
-#msg{
+#msg {
     background-color: #081b31;
     color: #fff;
     font-size: 2rem;
-    display: inline;
-    padding: 1rem;
+    display: inline-block;
+    padding: 1rem 2rem;
     border-radius: 1rem;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+     opacity: 0;
+}
+
+
+
+/* When active, show with effect */
+#msg.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+
+
+
+/* ------------------- */
+/* 🎯 Media Queries */
+/* ------------------- */
+
+/* Small Devices (Phones) */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.2rem;
+        height: auto;
+        line-height: 2rem;
+        padding: 1rem;
+    }
+
+    .choices {
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .choice {
+        height: 100px;
+        width: 100px;
+    }
+
+    img {
+        height: 90px;
+        width: 90px;
+    }
+
+    .score-board {
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 2rem;
+    }
+
+    #user-score,
+    #Comp-score {
+        font-size: 4rem;
+    }
+
+    #msg {
+        font-size: 1.2rem;
+        padding: 0.7rem 1.2rem;
+    }
+
+    .msg-container {
+        margin-top: 2rem;
+    }
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .choices {
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .choice {
+        height: 130px;
+        width: 130px;
+    }
+
+    img {
+        height: 120px;
+        width: 120px;
+    }
+
+    .score-board {
+        gap: 3rem;
+    }
+
+    #user-score,
+    #Comp-score {
+        font-size: 5rem;
+    }
+
+    #msg {
+        font-size: 1.5rem;
+    }
 }
